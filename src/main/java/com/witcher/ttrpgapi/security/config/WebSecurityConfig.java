@@ -1,119 +1,90 @@
 package com.witcher.ttrpgapi.security.config;
 
 
+import com.nimbusds.jose.jwk.JWK;
+import com.nimbusds.jose.jwk.JWKSet;
+import com.nimbusds.jose.jwk.RSAKey;
+import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
+import com.nimbusds.jose.jwk.source.JWKSource;
+import com.nimbusds.jose.proc.SecurityContext;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.ProviderManager;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.JwtEncoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import java.util.Arrays;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class WebSecurityConfig {
 
-/*   @Bean
-    public AuthenticationManager authenticationManager(
-            AuthenticationConfiguration configuration) throws Exception {
-        return configuration.getAuthenticationManager();
+    private final RsaKeyProperties rsaKeys;
+
+ /*   @Bean
+    public InMemoryUserDetailsManager user(){
+        return new InMemoryUserDetailsManager(
+                User.withUsername("Balint")
+                        .password("{noop}passwordka")
+                        .authorities("read")
+                        .build()
+        );
     }*/
-/*
-
-@Bean
-AuthenticationSuccessHandler authenticationSuccessHandler() {
-    return new CustomAuthenticationSuccessHandler();
-}
-
-    @Bean
-    AuthenticationFailureHandler authenticationFailureHandler() {
-        return new CustomAuthenticationFailureHandler();
-    }
 
     @Autowired
-    private MyAuthenticationProvider firstAuthProvider;
-
-
-
-    public AuthenticationManager authManager() throws Exception {
-        //AuthenticationManager authManager = new ProviderManager(new MyFirstCustomAuthenticationProvider());
-        AuthenticationManager authManager = new ProviderManager(firstAuthProvider);
-        return authManager;
-    }*/
+    public void configureAuth(AuthenticationManagerBuilder auth) throws Exception {
+       auth.inMemoryAuthentication()
+               .withUser("Balint")
+               .password("{noop}jelszoka")
+               .authorities("read")
+               .and()
+               .withUser("Test")
+               .password("{noop}12345")
+               .authorities("read");
+    }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-   /* http.csrf().disable()
-            .authorizeHttpRequests()
-            .requestMatchers("/login").permitAll()
-            .requestMatchers("/login-process").permitAll()
-            .requestMatchers("/fail").permitAll()
-            .anyRequest().authenticated()
-            .and()
-                .formLogin()
-                .loginProcessingUrl("/login-process")
-            .successHandler(authenticationSuccessHandler())
-            .failureHandler(authenticationFailureHandler())
-                .permitAll()
-           ;
-     //       .addFilter(new BasicAuthenticationFilter(authManager()));
-        return http.build();*/
-
-/*        http.csrf().disable()
-                .authorizeHttpRequests((authorize) ->
-                        //authorize.anyRequest().authenticated()
-                        authorize
-                                .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
-                                .requestMatchers("/signin").permitAll()
-                                .anyRequest().authenticated()
-                );
-
-        return http.build();*/
-
-
-   //      MŰKÖDIK
-        http.cors().and()
-                .csrf().disable()
-                .authorizeHttpRequests(auth -> {
-                   // auth.requestMatchers("/stories").permitAll();
-                    auth.requestMatchers("/").permitAll();
-                })
-
-               .formLogin()
-                .loginPage("/login")
-                .permitAll()
-               .and()
-               .httpBasic(withDefaults());
-        return http.build();
+        // JWT
+        return http
+                .csrf(csrf -> csrf.disable()) // (1)
+                .authorizeRequests( auth -> auth
+                        .anyRequest().authenticated() // (2)
+                )
+                .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // (3)
+                .httpBasic(withDefaults()) // (4)
+                .build();
 
     }
 
-/*    @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
-        configuration.setAllowedMethods(Arrays.asList("GET","POST"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }*/
+    @Bean
+    JwtDecoder jwtDecoder(){
+    return NimbusJwtDecoder.withPublicKey(rsaKeys.publicKey()).build();
+    }
 
-
-
+    @Bean
+    JwtEncoder jwtEncoder(){
+        JWK jwk = new RSAKey.Builder(rsaKeys.publicKey()).privateKey(rsaKeys.privateKey()).build();
+        JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
+        return new NimbusJwtEncoder(jwks);
+    }
 
 }

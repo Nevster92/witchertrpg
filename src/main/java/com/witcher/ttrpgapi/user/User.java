@@ -1,10 +1,7 @@
 package com.witcher.ttrpgapi.user;
 
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +13,7 @@ import java.util.Collections;
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class User implements UserDetails {
 
@@ -39,6 +37,16 @@ public class User implements UserDetails {
         this.userRole = userRole;
         this.locked = locked;
         this.enabled = enabled;
+    }
+    public User(String name, String username, String email, String password) {
+        this.name = name;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.userRole = UserRole.USER;
+        this.locked = false;
+        this.enabled = true;
+
     }
 
     @Override
