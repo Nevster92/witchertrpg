@@ -1,8 +1,0 @@
-com\witcher\ttrpgapi\WsConfig.class
-com\witcher\ttrpgapi\ChatController.class
-model\Message$MessageType.class
-com\witcher\ttrpgapi\TtrpgapiApplication.class
-com\witcher\ttrpgapi\WebSecConfig.class
-model\HelloMessage.class
-com\witcher\ttrpgapi\Greeting.class
-model\Message.class

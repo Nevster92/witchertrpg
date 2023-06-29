@@ -4,29 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab505d97-d791-44e1-a792-0a781f754ea8" name="Changes" comment="">
+    <list default="true" id="ab505d97-d791-44e1-a792-0a781f754ea8" name="Changes" comment="JWA impl">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/security/config/WebSocketSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/TtrpgapiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/TtrpgapiApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/APIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/APIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/security/MyAuthenticationManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/security/MyAuthenticationProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/security/PassworEncoder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/security/config/CustomAuthenticationFailureHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/security/config/CustomAuthenticationSuccessHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/security/config/JwtAuthenticationFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/WebSecConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/WsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/WsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/security/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/security/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/TtrpgapiApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/TtrpgapiApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/controller/APIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/controller/APIController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/security/PassworEncoder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/security/config/CustomAuthenticationFailureHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/security/config/CustomAuthenticationSuccessHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/security/config/JwtAuthenticationFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/ChatController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/ChatController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/WebSecConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/WsConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/WsConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/controller/AuthController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/security/config/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/security/config/WebSecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/user/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Message.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,8 +147,22 @@
       <workItem from="1686978299356" duration="30158000" />
       <workItem from="1687071411628" duration="11829000" />
       <workItem from="1687278018660" duration="2916000" />
-      <workItem from="1687513727284" duration="1323000" />
+      <workItem from="1687513727284" duration="2332000" />
+      <workItem from="1687588664007" duration="5567000" />
+      <workItem from="1687676178341" duration="25291000" />
+      <workItem from="1687723528211" duration="445000" />
+      <workItem from="1687760328465" duration="12091000" />
+      <workItem from="1687974143745" duration="3638000" />
+      <workItem from="1688018145175" duration="16290000" />
     </task>
+    <task id="LOCAL-00001" summary="JWA impl">
+      <created>1687515735522</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1687515735522</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +179,10 @@
         <option value="Space.CommitStatus" />
       </list>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="JWA impl" />
+    <option name="LAST_COMMIT_MESSAGE" value="JWA impl" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
