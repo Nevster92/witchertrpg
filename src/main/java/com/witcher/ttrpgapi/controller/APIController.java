@@ -1,5 +1,9 @@
 package com.witcher.ttrpgapi.controller;
 
+import com.witcher.ttrpgapi.security.config.TokenService;
+import model.TestModel;
+import model.Token;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,6 +12,8 @@ import java.security.Principal;
 @RestController
 public class APIController {
 
+    @Autowired
+    TokenService tokenService;
 
     @CrossOrigin
     @RequestMapping("/")
@@ -21,6 +27,7 @@ public class APIController {
     public String stories(){
         return "Stories";
     }
+
 
     @CrossOrigin
     @RequestMapping("/fail")
@@ -40,6 +47,14 @@ public class APIController {
     @PostMapping("/login")
     String postLogin() {
         return "login";
+    }
+
+
+    @CrossOrigin
+    @PostMapping("/token/validate")
+    public Token testPost(@RequestBody Token token) {
+        Token ret = tokenService.TokenValidate(token);
+        return ret;
     }
 
 

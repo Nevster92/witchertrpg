@@ -73,9 +73,11 @@ public class WebSecurityConfig  {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeRequests( auth -> auth
-                        .requestMatchers( "/stomp-endpoint").permitAll()
                         .requestMatchers( "/fail").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers( "/stories").authenticated()
+                        .requestMatchers( "/stomp-endpoint/*").permitAll()
+                        .requestMatchers( "/token/validate").permitAll()
+
                 )
                 .addFilterBefore(corsFilter(), CsrfFilter.class)
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
