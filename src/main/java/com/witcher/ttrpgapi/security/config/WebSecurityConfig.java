@@ -8,6 +8,8 @@ import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 import com.witcher.ttrpgapi.WsConfig;
+import com.witcher.ttrpgapi.service.CharacterService;
+import com.witcher.ttrpgapi.service.UserService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -26,6 +29,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
@@ -54,17 +60,23 @@ public class WebSecurityConfig  {
 
     private final RsaKeyProperties rsaKeys;
 
-    @Autowired
-    public void configureAuth(AuthenticationManagerBuilder auth) throws Exception {
-       auth.inMemoryAuthentication()
-               .withUser("Oklahoma")
-               .password("{noop}password")
-               .authorities("read")
-               .and()
-               .withUser("Test")
-               .password("{noop}12345")
-               .authorities("read");
-    }
+//    private UserService userService;
+//
+//    @Autowired
+//    public void UserService (UserService userService) {
+//        this.userService = userService;
+//    }
+
+    private final String[] WHITE_LIST = {
+            "/noauth",
+            "/character/new",
+            "/character/all_characters",
+            "/testall",
+            "/token",
+            "/stories"
+    };
+
+
 
 
     @Bean
@@ -73,12 +85,16 @@ public class WebSecurityConfig  {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeRequests( auth -> auth
-                        .requestMatchers( "/fail").permitAll()
+
+                        .requestMatchers( WHITE_LIST).permitAll()
+                        .requestMatchers("/**").authenticated()
+                        .requestMatchers( HttpMethod.POST,"/registration").permitAll()
                         .requestMatchers( "/stories").authenticated()
                         .requestMatchers( "/stomp-endpoint/*").permitAll()
                         .requestMatchers( "/token/validate").permitAll()
-
+                        .requestMatchers("/h2-console/**").permitAll()
                 )
+                .headers(headers -> headers.frameOptions().sameOrigin())    //H2 höz
                 .addFilterBefore(corsFilter(), CsrfFilter.class)
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -113,4 +129,10 @@ public class WebSecurityConfig  {
         JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
         return new NimbusJwtEncoder(jwks);
     }
+
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//
+//        return userService.findUserByUsername(username);
+//    }
 }

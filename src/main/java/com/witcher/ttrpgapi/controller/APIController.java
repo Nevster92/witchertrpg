@@ -1,10 +1,14 @@
 package com.witcher.ttrpgapi.controller;
 
+import com.witcher.ttrpgapi.character.Character;
 import com.witcher.ttrpgapi.security.config.TokenService;
-import model.TestModel;
+import com.witcher.ttrpgapi.service.AttributeValidator;
+import com.witcher.ttrpgapi.service.CharacterService;
+
 import model.Token;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -14,6 +18,16 @@ public class APIController {
 
     @Autowired
     TokenService tokenService;
+
+
+    private CharacterService characterService;
+
+    @Autowired
+    public void CharacterService (CharacterService characterService) {
+        this.characterService = characterService;
+    }
+
+
 
     @CrossOrigin
     @RequestMapping("/")
@@ -25,22 +39,30 @@ public class APIController {
     @CrossOrigin
     @RequestMapping("/stories")
     public String stories(){
-        return "Stories";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+        return "username: "+currentPrincipalName;
     }
 
-
     @CrossOrigin
-    @RequestMapping("/fail")
+    @RequestMapping("/noauth")
     public String fail(){
-        return "FAIL";
+
+
+        return "SIKEEEEER";
     }
 
     @CrossOrigin
-    @RequestMapping("/delete")
-    public String delete()
-    {
-        System.out.println("NA A DELETE LEGALÁB LEFUT");
-        return "Delete";
+    @RequestMapping("/testall")
+    public Character testAll() {
+
+//
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        Jwt jwt = (Jwt) authentication.getPrincipal();
+//        long userId =  jwt.getClaim("id");
+//
+//        String currentPrincipalName = authentication.getName();
+        return characterService.getCharacterByUserId(3);
     }
 
     @CrossOrigin
@@ -56,6 +78,8 @@ public class APIController {
         Token ret = tokenService.TokenValidate(token);
         return ret;
     }
+
+
 
 
 }

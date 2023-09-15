@@ -1,13 +1,19 @@
 package com.witcher.ttrpgapi.user;
 
+import com.witcher.ttrpgapi.service.UserService;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,10 +23,11 @@ import java.util.Collections;
 @Entity
 public class User implements UserDetails {
 
-    // ittm ég van valami 17:42 ha esetleg nem menne
+
+
+
     @Id
-    private Long id;
-    private String name;
+    private Integer id;
     private String username;
     private String email;
     private String password;
@@ -29,8 +36,10 @@ public class User implements UserDetails {
     private Boolean locked;
     private Boolean enabled;
 
-    public User(String name, String username, String email, String password, UserRole userRole, Boolean locked, Boolean enabled) {
-        this.name = name;
+
+
+    public User(int id, String username, String email, String password, UserRole userRole, Boolean locked, Boolean enabled) {
+        this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
@@ -38,8 +47,9 @@ public class User implements UserDetails {
         this.locked = locked;
         this.enabled = enabled;
     }
-    public User(String name, String username, String email, String password) {
-        this.name = name;
+
+    public User(int id, String username, String email, String password) {
+        this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
@@ -84,4 +94,11 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return enabled;
     }
+
+
+    public boolean isFilled(){
+        return this.username != null && this.email != null & this.password != null;
+    }
 }
+
+

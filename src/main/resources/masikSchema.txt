@@ -1,0 +1,115 @@
+create table user_data
+(
+    id       serial
+        constraint user_data_id
+            primary key,
+    username varchar not null,
+    password varchar not null,
+    email    varchar not null
+);
+
+INSERT INTO user_data (username, password, email)
+VALUES ('Balint', '{noop}12345', 'balint@gmail.com');
+
+INSERT INTO user_data (username, password, email)
+VALUES ('Test', '{noop}12345', 'testee@gmail.com');
+
+
+
+
+
+
+create table character
+(
+    id                  serial
+        constraint character_id
+            primary key,
+    name                varchar not null,
+    profession          varchar not null,
+    race                varchar not null,
+    gender              varchar,
+    age                 integer,
+    intelligence        integer,
+    ref                 integer,
+    dex                 integer,
+    body                integer,
+    spd                 integer,
+    emp                 integer,
+    cra                 integer,
+    will                integer,
+    luck                integer,
+    stun                integer,
+    run                 integer,
+    leap                integer,
+    hp                  integer,
+    sta                 integer,
+    enc                 integer,
+    rec                 integer,
+    punch               integer,
+    kick                integer,
+    awareness           integer,
+    business            integer,
+    deduction           integer,
+    education           integer,
+    common_speech       integer,
+    elder_speech        integer,
+    dwarven_speech      integer,
+    monster_lore        integer,
+    social_etiquette    integer,
+    streetwise          integer,
+    tactics             integer,
+    teaching            integer,
+    wilderness_survival integer,
+    brawling            integer,
+    dodge               integer,
+    meele               integer,
+    riding              integer,
+    sailing             integer,
+    small_blades        integer,
+    staff               integer,
+    swordsmanship       integer,
+    archery             integer,
+    athletic            integer,
+    crossbow            integer,
+    sleight_of_hand     integer,
+    stealth             integer,
+    physique            integer,
+    endurance           integer,
+    charisma            integer,
+    deceit              integer,
+    fine_art            integer,
+    gambling            integer,
+    style               integer,
+    human_perception    integer,
+    leadership          integer,
+    persuasion          integer,
+    performance         integer,
+    seduction           integer,
+    alchemy             integer,
+    crafting            integer,
+    disguise            integer,
+    first_aid           integer,
+    forgery             integer,
+    pick_lock           integer,
+    trap_crafting       integer,
+    courage             integer,
+    hex_weaving         integer,
+    intimidation        integer,
+    spell_casting       integer,
+    resist_magic        integer,
+    resist_coercion     integer,
+    ritual_crafting     integer,
+    user_data_id        integer
+        constraint user_data_id
+            references user_data
+);
+
+
+INSERT INTO CHARACTER (user_data_id, name, PROFESSION, RACE)
+VALUES (1, 'Nevster', 'witcher', 'human');
+
+INSERT INTO CHARACTER (user_data_id,NAME, RACE, GENDER, AGE, PROFESSION, INTELLIGENCE)
+VALUES (2,'Test Név', 'törpe', 'nő', 23, 'csöves', 62);
+
+INSERT INTO CHARACTER (user_data_id,NAME, RACE, GENDER, AGE, PROFESSION, INTELLIGENCE)
+VALUES (1,'Második Test', 'elf', 'férfi', 800, 'hajléktalan', 3);

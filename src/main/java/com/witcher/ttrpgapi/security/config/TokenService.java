@@ -1,5 +1,6 @@
 package com.witcher.ttrpgapi.security.config;
 
+import com.witcher.ttrpgapi.user.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import model.Token;
@@ -34,6 +35,7 @@ public class TokenService {
 
     public String generateToken(Authentication authentication){
         Instant now = Instant.now();
+        User userDetails = (User) authentication.getPrincipal();
         String scope = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(" "));
@@ -43,6 +45,7 @@ public class TokenService {
                 .expiresAt(now.plus(1, ChronoUnit.HOURS))
                 .subject(authentication.getName())
                 .claim("scope", scope)
+                .claim("id", userDetails.getId())
                 .build();
         return this.encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
     }
