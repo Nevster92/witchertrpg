@@ -4,6 +4,7 @@ import com.witcher.ttrpgapi.security.config.TokenService;
 import com.witcher.ttrpgapi.service.UserService;
 import com.witcher.ttrpgapi.user.User;
 import jakarta.annotation.PostConstruct;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ public class AuthController {
     }
     @CrossOrigin
     @PostMapping("/registration")
-    public ResponseEntity<?> register(@RequestBody User userDetails){
+    public ResponseEntity<?> register(@RequestBody @Valid User userDetails){
       if(userService.createNewUser(userDetails)){
           return ResponseEntity.status(HttpStatus.OK.value()).build();
       }else{

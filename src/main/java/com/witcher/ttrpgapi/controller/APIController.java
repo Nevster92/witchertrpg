@@ -1,17 +1,20 @@
 package com.witcher.ttrpgapi.controller;
 
-import com.witcher.ttrpgapi.character.Character;
+import com.witcher.ttrpgapi.pojo.Character;
 import com.witcher.ttrpgapi.security.config.TokenService;
-import com.witcher.ttrpgapi.service.AttributeValidator;
 import com.witcher.ttrpgapi.service.CharacterService;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import model.Token;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.Map;
 
 @RestController
 public class APIController {
@@ -29,23 +32,20 @@ public class APIController {
 
 
 
-    @CrossOrigin
-    @RequestMapping("/")
-    public String index(Principal principal){
-        return "Főoldal "+ principal.getName();
-    }
 
 
     @CrossOrigin
-    @RequestMapping("/stories")
+    @GetMapping("/stories")
     public String stories(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
         return "username: "+currentPrincipalName;
     }
 
+
+
     @CrossOrigin
-    @RequestMapping("/noauth")
+    @GetMapping("/noauth")
     public String fail(){
 
 
@@ -53,17 +53,21 @@ public class APIController {
     }
 
     @CrossOrigin
-    @RequestMapping("/testall")
-    public Character testAll() {
-
-//
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        Jwt jwt = (Jwt) authentication.getPrincipal();
-//        long userId =  jwt.getClaim("id");
-//
-//        String currentPrincipalName = authentication.getName();
-        return characterService.getCharacterByUserId(3);
+    @GetMapping("/gettest")
+    public String getTest() {
+        return "";
     }
+    @CrossOrigin
+    @PostMapping("/posttest/{path}")
+    ResponseEntity<?> postTest(@PathVariable(value="path") Integer path,
+                              @RequestBody Map<String, Object> requestBody) {
+        System.out.println(path);
+        System.out.println(requestBody.toString());
+
+        return ResponseEntity.ok("fasza minden tes");
+    }
+
+
 
     @CrossOrigin
     @PostMapping("/login")

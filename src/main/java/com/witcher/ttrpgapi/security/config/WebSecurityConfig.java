@@ -32,6 +32,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
@@ -71,9 +73,12 @@ public class WebSecurityConfig  {
             "/noauth",
             "/character/new",
             "/character/all_characters",
-            "/testall",
+            "/posttest/*",
+            "/gettest",
             "/token",
-            "/stories"
+            "/stories",
+            "/token/validate",
+            "/registration"
     };
 
 
@@ -87,8 +92,21 @@ public class WebSecurityConfig  {
                 .authorizeRequests( auth -> auth
 
                         .requestMatchers( WHITE_LIST).permitAll()
+                        .requestMatchers("/swagger-ui.html").permitAll()
+                        .requestMatchers("/swagger-ui").permitAll()
+                        .requestMatchers("/webjars/**").permitAll()
+                        .requestMatchers("/configuration/security").permitAll()
+                        .requestMatchers("/configuration/ui").permitAll()
+                        .requestMatchers("/swagger-resources").permitAll()
+                        .requestMatchers("/swagger-resources/**").permitAll()
+                        .requestMatchers("/v3/api-docs/**").permitAll()
+                        .requestMatchers("/v3/api-docs").permitAll()
+                        .requestMatchers("/v2/api-docs").permitAll()
+                        .requestMatchers("/api/v1/auth/**").permitAll()
+                        .requestMatchers("/swagger-ui/index.html").permitAll()
+
                         .requestMatchers("/**").authenticated()
-                        .requestMatchers( HttpMethod.POST,"/registration").permitAll()
+                 //       .requestMatchers( HttpMethod.POST,"/registration").permitAll()
                         .requestMatchers( "/stories").authenticated()
                         .requestMatchers( "/stomp-endpoint/*").permitAll()
                         .requestMatchers( "/token/validate").permitAll()
@@ -99,6 +117,7 @@ public class WebSecurityConfig  {
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .httpBasic(withDefaults())
+
                 .build();
     }
 
@@ -135,4 +154,16 @@ public class WebSecurityConfig  {
 //
 //        return userService.findUserByUsername(username);
 //    }
+
+
+
+
+
+
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
 }

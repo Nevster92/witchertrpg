@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @NoArgsConstructor
@@ -35,6 +36,8 @@ public class UserService implements UserDetailsService {
         }
 
         try {
+            BCryptPasswordEncoder brypt  = new BCryptPasswordEncoder();
+            userDetails.setPassword(brypt.encode(userDetails.getPassword()));
             userRepo.findUserByUsername(userDetails.getUsername());
             return false;
         }catch (EmptyResultDataAccessException e){
@@ -45,6 +48,8 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+
         return findUserByUsername(username);
     }
 }

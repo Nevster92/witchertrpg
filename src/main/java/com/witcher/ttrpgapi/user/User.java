@@ -2,6 +2,7 @@ package com.witcher.ttrpgapi.user;
 
 import com.witcher.ttrpgapi.service.UserService;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -28,8 +29,11 @@ public class User implements UserDetails {
 
     @Id
     private Integer id;
+    @NotNull
     private String username;
+    @NotNull
     private String email;
+    @NotNull
     private String password;
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
