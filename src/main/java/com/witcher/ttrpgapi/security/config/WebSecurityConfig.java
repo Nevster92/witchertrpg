@@ -104,11 +104,11 @@ public class WebSecurityConfig  {
                         .requestMatchers("/v2/api-docs").permitAll()
                         .requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers("/swagger-ui/index.html").permitAll()
-
+                        .requestMatchers( "/stomp-endpoint/**").permitAll()
                         .requestMatchers("/**").authenticated()
-                 //       .requestMatchers( HttpMethod.POST,"/registration").permitAll()
+
                         .requestMatchers( "/stories").authenticated()
-                        .requestMatchers( "/stomp-endpoint/*").permitAll()
+
                         .requestMatchers( "/token/validate").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
                 )
