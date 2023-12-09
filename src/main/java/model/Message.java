@@ -1,7 +1,7 @@
 package model;
 
 
-public class Message {
+public class Message<T> {
 private String content;
 private String sender;
 

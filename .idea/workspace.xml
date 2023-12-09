@@ -4,7 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab505d97-d791-44e1-a792-0a781f754ea8" name="Changes" comment="" />
+    <list default="true" id="ab505d97-d791-44e1-a792-0a781f754ea8" name="Changes" comment="campaign crud">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/pojo/request/AbillityRollReq.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/service/ActionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/service/WsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/user/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/WsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/WsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/APIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/APIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/CampaignController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/CampaignController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/CharacterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/CharacterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/InventoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/pojo/Campaign.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/pojo/Campaign.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/repository/CampaignRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/repository/CampaignRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/repository/CharacterJdbcRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/repository/CharacterJdbcRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/security/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/security/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/service/AttributeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/service/CampaignService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/service/CampaignService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/service/CharacterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/service/CharacterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/utils/TableReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/utils/TableReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tables.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tables.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/ChatController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/ChatController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/WsConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/WsConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/controller/APIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/controller/APIController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/security/config/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/security/config/WebSecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/user/User.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,13 +45,18 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="Interface" />
         <option value="HTML File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
@@ -31,13 +67,7 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="mavenHome" value="Use Maven wrapper" />
-        <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
-    </option>
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="workspaceImportEnabled" value="true" />
-      </MavenImportingSettings>
     </option>
   </component>
   <component name="ProjectId" id="2Q3PzP4KzF92zL27lnvn3sKTxKO" />
@@ -45,36 +75,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/nevst/Desktop/szakdoga/ttrpgapi/src/main/java/com/witcher/ttrpgapi",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.33333334",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "spring.configuration.checksum": "96958ac15e7e6097a5fb441a883c57e6",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nevst/Desktop/szakdoga/ttrpgapi/src/main/java/com/witcher/ttrpgapi&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.33333334&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;96958ac15e7e6097a5fb441a883c57e6&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\nevst\\AppData\\Local\\JetBrains\\Toolbox\\apps\\IDEA-U\\ch-0\\232.8660.185\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;h2&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.witcher.ttrpgapi.controller" />
+      <recent name="com.witcher.ttrpgapi.security.config" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\nevst\Desktop\szakdoga\ttrpgapi\src\main\java\com\witcher\ttrpgapi" />
       <recent name="C:\Users\nevst\Desktop\szakdoga\ttrpgapi\src\main\resources\static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nevst\Desktop\szakdoga\ttrpgapi\src\main\resources" />
       <recent name="C:\Users\nevst\Desktop\szakdoga\ttrpgapi\src\main\resources\static" />
       <recent name="C:\Users\nevst\Desktop\szakdoga\ttrpgapi\src\main\resources\templates" />
     </key>
@@ -115,12 +157,142 @@
       <workItem from="1686729674254" duration="12203000" />
       <workItem from="1686811409153" duration="24131000" />
       <workItem from="1686921160141" duration="7306000" />
-      <workItem from="1686978299356" duration="16797000" />
+      <workItem from="1686978299356" duration="30158000" />
+      <workItem from="1687071411628" duration="11829000" />
+      <workItem from="1687278018660" duration="2916000" />
+      <workItem from="1687513727284" duration="2332000" />
+      <workItem from="1687588664007" duration="5567000" />
+      <workItem from="1687676178341" duration="25291000" />
+      <workItem from="1687723528211" duration="445000" />
+      <workItem from="1687760328465" duration="12091000" />
+      <workItem from="1687974143745" duration="3638000" />
+      <workItem from="1688018145175" duration="16290000" />
+      <workItem from="1692945680981" duration="17862000" />
+      <workItem from="1693213953018" duration="6195000" />
+      <workItem from="1693302845324" duration="4469000" />
+      <workItem from="1693401780930" duration="7547000" />
+      <workItem from="1693987079839" duration="18126000" />
+      <workItem from="1694070761098" duration="20471000" />
+      <workItem from="1694164181932" duration="23472000" />
+      <workItem from="1694249769091" duration="28959000" />
+      <workItem from="1694328275508" duration="14976000" />
+      <workItem from="1694426570471" duration="12286000" />
+      <workItem from="1694528292456" duration="4978000" />
+      <workItem from="1694603400867" duration="9967000" />
+      <workItem from="1694673602805" duration="21746000" />
+      <workItem from="1694782869726" duration="9534000" />
+      <workItem from="1694846353415" duration="14223000" />
+      <workItem from="1694933571433" duration="19430000" />
+      <workItem from="1695045523473" duration="9227000" />
+      <workItem from="1695103620225" duration="23183000" />
+      <workItem from="1695194644238" duration="8010000" />
+      <workItem from="1695281617198" duration="1809000" />
+      <workItem from="1695366403546" duration="4351000" />
+      <workItem from="1695451329418" duration="5770000" />
+      <workItem from="1695538129313" duration="4786000" />
+      <workItem from="1695657422440" duration="598000" />
+      <workItem from="1695796944928" duration="12989000" />
+      <workItem from="1695882888738" duration="21625000" />
+      <workItem from="1695974232575" duration="4355000" />
+      <workItem from="1696055495868" duration="16815000" />
+      <workItem from="1696146004153" duration="17457000" />
+      <workItem from="1696238666441" duration="6854000" />
+      <workItem from="1696311485573" duration="24305000" />
+      <workItem from="1696361206505" duration="120000" />
+      <workItem from="1696400520377" duration="12789000" />
+      <workItem from="1696489611465" duration="26570000" />
+      <workItem from="1696580629394" duration="12252000" />
+      <workItem from="1696659035654" duration="13835000" />
+      <workItem from="1696757090613" duration="4653000" />
+      <workItem from="1697018211789" duration="2468000" />
+      <workItem from="1697095383791" duration="19264000" />
+      <workItem from="1697557405259" duration="5162000" />
+      <workItem from="1697691718307" duration="15948000" />
+      <workItem from="1697892157522" duration="4461000" />
+      <workItem from="1697901172323" duration="1024000" />
+      <workItem from="1698335294927" duration="683000" />
+      <workItem from="1698490672900" duration="2653000" />
+      <workItem from="1698565661253" duration="9846000" />
+      <workItem from="1699435341274" duration="7774000" />
+      <workItem from="1701515116585" duration="10040000" />
+      <workItem from="1701593398844" duration="5964000" />
+      <workItem from="1701938276047" duration="15978000" />
     </task>
+    <task id="LOCAL-00001" summary="JWA impl">
+      <created>1687515735522</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1687515735522</updated>
+    </task>
+    <task id="LOCAL-00002" summary="JWT validate">
+      <option name="closed" value="true" />
+      <created>1692984735068</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1692984735069</updated>
+    </task>
+    <task id="LOCAL-00003" summary="character CDRUD">
+      <option name="closed" value="true" />
+      <created>1694794743345</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1694794743345</updated>
+    </task>
+    <task id="LOCAL-00004" summary="inventory crud">
+      <option name="closed" value="true" />
+      <created>1696361258434</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696361258434</updated>
+    </task>
+    <task id="LOCAL-00005" summary="campaign crud">
+      <option name="closed" value="true" />
+      <created>1696512374237</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696512374237</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="SHOW_OTHER_BRANCHES" value="true" />
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="JWA impl" />
+    <MESSAGE value="JWT validate" />
+    <MESSAGE value="character CDRUD" />
+    <MESSAGE value="inventory crud" />
+    <MESSAGE value="campaign crud" />
+    <option name="LAST_COMMIT_MESSAGE" value="campaign crud" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

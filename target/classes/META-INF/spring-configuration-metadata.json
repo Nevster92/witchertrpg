@@ -1,0 +1,22 @@
+{
+  "groups": [
+    {
+      "name": "rsa",
+      "type": "com.witcher.ttrpgapi.security.config.RsaKeyProperties",
+      "sourceType": "com.witcher.ttrpgapi.security.config.RsaKeyProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "rsa.private-key",
+      "type": "java.security.interfaces.RSAPrivateKey",
+      "sourceType": "com.witcher.ttrpgapi.security.config.RsaKeyProperties"
+    },
+    {
+      "name": "rsa.public-key",
+      "type": "java.security.interfaces.RSAPublicKey",
+      "sourceType": "com.witcher.ttrpgapi.security.config.RsaKeyProperties"
+    }
+  ],
+  "hints": []
+}
