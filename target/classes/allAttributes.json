@@ -1,0 +1,132 @@
+{
+
+
+  "bodyPart" : [
+    "head",
+    "torso",
+    "legs"
+  ],
+  "weaponSlot":[
+    "r_arm",
+    "l_arm"
+  ],
+  "weapon" : [
+    "name",
+    "type",
+    "weapon_accuracy",
+    "availability",
+    "damage",
+    "reliability",
+    "hands_required",
+    "range",
+    "effect",
+    "concealment",
+    "enhancements",
+    "weight",
+    "cost",
+    "category"
+  ],
+
+  "armor" : [
+    "name",
+    "category",
+    "stopping_power",
+    "armor_enhancement",
+    "availability",
+    "effect",
+    "encumbrance_value",
+    "weight",
+    "price"
+  ],
+
+  "character": [
+
+    "name",
+    "profession",
+    "race",
+    "gender",
+    "age",
+
+    "intelligence",
+    "ref",
+    "dex",
+    "body",
+    "spd",
+    "emp",
+    "cra",
+    "will",
+    "luck",
+    "stun",
+    "run",
+    "leap",
+    "hp",
+    "sta",
+    "enc",
+    "rec",
+    "punch",
+    "kick",
+
+    "awareness",
+    "business",
+    "deduction",
+    "education",
+    "commonSpeech",
+    "elderSpeech",
+    "dwarvenSpeech",
+    "monsterLore",
+    "socialEtiquette",
+    "streetwise",
+    "tactics",
+    "teaching",
+    "wildernessSurvival",
+
+    "brawling",
+    "dodge",
+    "melee",
+    "riding",
+    "sailing",
+    "smallBlades",
+    "staff",
+    "swordsmanship",
+
+    "archery",
+    "athletic",
+    "crossbow",
+    "sleightOfHand",
+    "stealth",
+
+    "physique",
+    "endurance",
+
+    "charisma",
+    "deceit",
+    "fineArt",
+    "gambling",
+    "style",
+    "humanPerception",
+    "leadership",
+    "persuasion",
+    "performance",
+    "seduction",
+
+    "alchemy",
+    "crafting",
+    "disguise",
+    "firstAid",
+    "forgery",
+    "pickLock",
+    "trapCrafting",
+
+    "courage",
+    "hexWeaving",
+    "intimidation",
+    "spellCasting",
+    "resistMagic",
+    "resistCoercion",
+    "ritualCrafting"
+
+  ]
+
+
+
+}
