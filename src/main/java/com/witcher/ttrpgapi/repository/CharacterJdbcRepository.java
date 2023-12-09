@@ -64,47 +64,13 @@ public class CharacterJdbcRepository {
 
         namedParameterJdbcTemplate.update(sql, paramSource, keyHolder);
 
-        //    String sql = "INSERT INTO CHARACTER (NAME, PROFESSION, RACE, GENDER, INTELLIGENCE, REF, DEX, BODY, WILL, HP, STA, REC, STUN, MAX_HP, MElEE_BONUS, RUN, LEAP, ENC, SPD) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING ID";
-   //   int newCharacterId =  jdbc.update(sql, newCharDetails.getName(), newCharDetails.getProfession(), newCharDetails.getRace());
-
-//        jdbc.update(connection -> {
-//            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-//            ps.setString(1, newCharDetails.getName());
-//            ps.setString(2, newCharDetails.getProfession());
-//            ps.setString(3, newCharDetails.getRace());
-//            ps.setString(4, newCharDetails.getGender());
-//            ps.setInt(5, newCharDetails.getIntelligence());
-//            ps.setInt(6, newCharDetails.getRef());
-//            ps.setInt(7, newCharDetails.getDex());
-//            ps.setInt(8, newCharDetails.getBody());
-//            ps.setInt(9, newCharDetails.getWill());
-//            ps.setInt(10, newCharDetails.getHp());
-//            ps.setInt(11, newCharDetails.getSta());
-//            ps.setInt(12, newCharDetails.getRec());
-//            ps.setInt(13, newCharDetails.getStun());
-//            ps.setInt(14, newCharDetails.getHp());
-//            ps.setInt(15, newCharDetails.getMeleeBonus());
-//            ps.setInt(16, newCharDetails.getRun());
-//            ps.setInt(17, newCharDetails.getLeap());
-//            ps.setInt(18, newCharDetails.getEnc());
-//            ps.setInt(19, newCharDetails.getSpd());
-//
-//            return ps;
-//        }, keyHolder);
-
-
         int newCharacterId = keyHolder.getKey().intValue();
 
-        // TODO külön kéne szedni?
-        // attach to user
         String user_character_sql = "INSERT INTO user_characters (user_id, character_id) VALUES (?,?)";
         jdbc.update(user_character_sql, userId, newCharacterId);
 
-        // init bodyparts
         String wearingSql = "INSERT INTO character_wearing (character_id) VALUES (?);";
         jdbc.update(wearingSql, newCharacterId);
-
-
     }
 
     public void updateCharacterAttributeById(int characterId, String attribute, int value){

@@ -31,9 +31,6 @@ public class APIController {
     }
 
 
-
-
-
     @CrossOrigin
     @GetMapping("/stories")
     public String stories(){
@@ -43,12 +40,9 @@ public class APIController {
     }
 
 
-
     @CrossOrigin
     @GetMapping("/noauth")
     public String fail(){
-
-
         return "SIKEEEEER";
     }
 
@@ -67,21 +61,6 @@ public class APIController {
         return ResponseEntity.ok("fasza minden tes");
     }
 
-
-
-    @CrossOrigin
-    @PostMapping("/login")
-    String postLogin() {
-        return "login";
-    }
-
-
-    @CrossOrigin
-    @PostMapping("/token/validate")
-    public Token testPost(@RequestBody Token token) {
-        Token ret = tokenService.TokenValidate(token);
-        return ret;
-    }
 
 
 

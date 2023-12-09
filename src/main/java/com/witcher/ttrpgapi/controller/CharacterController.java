@@ -36,7 +36,7 @@ public class CharacterController {
     @CrossOrigin
     @PostMapping("/character/new")
     ResponseEntity<?>  createNewCharacter(@RequestBody @Valid Character character){
-        character.setCalculatedStats();
+
     if( characterService.createNewCharacter(character)){
         return OK;
     }

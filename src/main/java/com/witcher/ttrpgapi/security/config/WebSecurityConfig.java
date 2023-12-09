@@ -78,7 +78,21 @@ public class WebSecurityConfig  {
             "/token",
             "/stories",
             "/token/validate",
-            "/registration"
+            "/registration",
+            "/swagger-ui.html",
+            "/swagger-ui",
+            "/webjars/**",
+            "/configuration/security",
+            "/configuration/ui",
+            "/swagger-resources",
+            "/swagger-resources/**",
+            "/v3/api-docs/**",
+            "/v3/api-docs",
+            "/v2/api-docs",
+            "/api/v1/auth/**",
+            "/swagger-ui/index.html",
+            "/stomp-endpoint/**"
+
     };
 
 
@@ -90,34 +104,15 @@ public class WebSecurityConfig  {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeRequests( auth -> auth
-
                         .requestMatchers( WHITE_LIST).permitAll()
-                        .requestMatchers("/swagger-ui.html").permitAll()
-                        .requestMatchers("/swagger-ui").permitAll()
-                        .requestMatchers("/webjars/**").permitAll()
-                        .requestMatchers("/configuration/security").permitAll()
-                        .requestMatchers("/configuration/ui").permitAll()
-                        .requestMatchers("/swagger-resources").permitAll()
-                        .requestMatchers("/swagger-resources/**").permitAll()
-                        .requestMatchers("/v3/api-docs/**").permitAll()
-                        .requestMatchers("/v3/api-docs").permitAll()
-                        .requestMatchers("/v2/api-docs").permitAll()
-                        .requestMatchers("/api/v1/auth/**").permitAll()
-                        .requestMatchers("/swagger-ui/index.html").permitAll()
-                        .requestMatchers( "/stomp-endpoint/**").permitAll()
                         .requestMatchers("/**").authenticated()
-
-                        .requestMatchers( "/stories").authenticated()
-
                         .requestMatchers( "/token/validate").permitAll()
-                        .requestMatchers("/h2-console/**").permitAll()
                 )
-                .headers(headers -> headers.frameOptions().sameOrigin())    //H2 höz
+                .headers(headers -> headers.frameOptions().sameOrigin())
                 .addFilterBefore(corsFilter(), CsrfFilter.class)
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .httpBasic(withDefaults())
-
                 .build();
     }
 

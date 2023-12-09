@@ -2,7 +2,9 @@ package com.witcher.ttrpgapi.controller;
 
 import com.witcher.ttrpgapi.pojo.Campaign;
 import com.witcher.ttrpgapi.pojo.Character;
+import com.witcher.ttrpgapi.pojo.request.AbillityRollReq;
 import com.witcher.ttrpgapi.pojo.request.JoinReq;
+import com.witcher.ttrpgapi.service.ActionService;
 import com.witcher.ttrpgapi.service.CampaignService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,19 +15,24 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class CampaignController {
     private final ResponseEntity OK = ResponseEntity.status(HttpStatus.OK.value()).build();
     private final ResponseEntity ERROR = ResponseEntity.badRequest().build();
     private final ResponseEntity TEST = ResponseEntity.ok("Teszt!!!!");
 
     private CampaignService campaignService;
+    private ActionService actionService;
 
     @Autowired
     public void CampaignService(CampaignService campaignService){
         this.campaignService = campaignService;
     }
 
+    @Autowired
+    public void ActionService(ActionService actionService){
+        this.actionService = actionService;
+    }
 
     @CrossOrigin
     @PostMapping("/campaign/new")
@@ -62,7 +69,7 @@ public class CampaignController {
         return campaignService.getInvitation(id);
     }
 
-    // Not working unkow reason 404
+    // Not working unknown reason 404
 //    @CrossOrigin
 //    @GetMapping("/campaign/get/all")
 //    List<Campaign> getAllCampaign(){
@@ -71,13 +78,22 @@ public class CampaignController {
 
 
 
-    //GET CAMPAIGN BY ID
-
+    @CrossOrigin
+    @GetMapping("/campaign/get/{id}")
+    Campaign getCampaignById(@PathVariable(value="id") Integer id){
+        Campaign c = campaignService.getCampaignById(id);
+        return c;
+    }
 
     @CrossOrigin
-    @GetMapping("/campaign/get/all")
-    ResponseEntity<?> getAllCampaign(){
-        return ResponseEntity.ok(campaignService.getAllCampaign());
+    @GetMapping("/campaign/get/all_as_dm")
+    ResponseEntity<?> getAllCampaignAsDm(){
+        return ResponseEntity.ok(campaignService.getAllCampaignAsDm());
+    }
+    @CrossOrigin
+    @GetMapping("/campaign/get/all_as_player")
+    ResponseEntity<?> getAllCampaignAsPlayer(){
+        return ResponseEntity.ok(campaignService.getAllCampaignAsPlayer());
     }
 
 
@@ -89,6 +105,13 @@ public class CampaignController {
         System.out.println(joinReq.getCharacterId());
         return campaignService.joinCampaign(joinReq);
     }
+
+    @CrossOrigin
+    @GetMapping("/campaign/roll/abillity")
+    ResponseEntity<?> getAbillityRoll(@RequestBody @Valid AbillityRollReq abillityRollReq){
+        return actionService.rollAbillity(abillityRollReq);
+    }
+
 
 
 

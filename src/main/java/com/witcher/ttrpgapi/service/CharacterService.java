@@ -78,17 +78,13 @@ public class CharacterService {
 
 
     public boolean createNewCharacter(Character character) {
-
-       // already exist with that name?
             if (characterJdbcRepo.getCharacterByUserIdAndName(currentUserId(), character.getName()) == null) {
-
+                character.setCalculatedStats();
                characterJdbcRepo.createNewCharacter(character, currentUserId());
                 return true;
             } else {
                 return false;
             }
-
-
     }
 
     public boolean updateCharacterAttribute(String attribute, Integer value, int characterId) {
@@ -274,7 +270,7 @@ public class CharacterService {
     public ResponseEntity<?> wearItem(WearigItem details) {
 
         // övé e a kari?
-        if(inventoryRepo.isUserHasAccessToWeapon(currentUserId(), details.getItemId()) ){
+        if(!inventoryRepo.isUserHasAccessToWeapon(currentUserId(), details.getItemId()) ){
             return ResponseEntity.badRequest().body(NO_PERMISSION);
         }
 

@@ -96,8 +96,8 @@ public class InventoryController {
         }catch (Error e){
             return ERROR;
         }
-
     }
+
 
     @CrossOrigin
     @PostMapping("/character/{id}/inventory/armor/add")
@@ -136,7 +136,6 @@ public class InventoryController {
     @CrossOrigin
     @PutMapping("/character/inventory/wear")
     ResponseEntity<?>wearItemToCharacter(@RequestBody @Valid WearigItem details){
-
             return characterService.wearItem(details);
     }
 

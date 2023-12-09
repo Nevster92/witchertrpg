@@ -10,7 +10,6 @@ import java.util.Map;
 public class TableReader {
 
 
-//TODO gyorsítás konstruktorral?
     public Integer physicalTableRead(int calculatedKey, String attributeKey){
         try {
             // .json fájl beolvasása

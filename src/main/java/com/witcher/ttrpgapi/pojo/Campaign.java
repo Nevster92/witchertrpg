@@ -19,4 +19,5 @@ public class Campaign {
     private String title;
     private String description;
     private String invitationLink;
+    private int characterId;
 }

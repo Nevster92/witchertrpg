@@ -103,6 +103,19 @@ public class User implements UserDetails {
     public boolean isFilled(){
         return this.username != null && this.email != null & this.password != null;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", userRole=" + userRole +
+                ", locked=" + locked +
+                ", enabled=" + enabled +
+                '}';
+    }
 }
 
 

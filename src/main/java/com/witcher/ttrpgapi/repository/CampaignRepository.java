@@ -42,7 +42,7 @@ public class CampaignRepository {
     }
     public void deleteCampaign(int campaignId){
             // DELETE FOREIGN KEYS
-            String sql = "DELETE FROM campaign_characters WHERE campaign_id = ?;";
+            String sql = "update user_characters SET campaign_id = null WHERE campaign_id = ?";
             jdbc.update(sql, campaignId);
 
             //TODO elöbb a külső kulcsokat is törölni kell
@@ -78,18 +78,25 @@ public class CampaignRepository {
 
     }
 
-    public List<Campaign> getAllCampaignByUserId(int userId) {
+    public List<Campaign> getAllCampaignAsDmByUserId(int userId) {
         String sql = "SELECT * FROM campaign  WHERE user_id = ?";
 
         return jdbc.query(
                 sql,
                 new Object[]{userId},
                 new BeanPropertyRowMapper<>(Campaign.class));
-
     }
+    public List<Campaign> getAllCampaignAsPlayerByUserId(int userId) {
+        String sql = "SELECT c.* FROM campaign c JOIN user_characters uc ON c.id = uc.campaign_id WHERE uc.user_id = ?";
 
+        return jdbc.query(
+                sql,
+                new Object[]{userId},
+                new BeanPropertyRowMapper<>(Campaign.class));
+    }
     public void putCharacterToCampaign(int characterId, int campaignId) {
-        String sql = "INSERT INTO campaign_characters (campaign_id, character_id) VALUES (?,?)";
+
+        String sql = "update user_characters SET campaign_id = ? WHERE character_id = ?";
         try {
             jdbc.update(sql,campaignId,characterId);
         }catch (Error e){
@@ -97,4 +104,30 @@ public class CampaignRepository {
         }
 
     }
+
+
+    public int userIsPlayer(int campaignId, int userId) {
+        String sql = "select character_id from user_characters where campaign_id = ? AND user_id = ?";
+
+        try {
+           return jdbc.queryForObject(sql, Integer.class, campaignId, userId);
+
+        }catch (EmptyResultDataAccessException e){
+            return 0;
+        }
+    }
+
+    public Campaign getCampaignById(int campaignId) {
+        String sql = "SELECT * FROM campaign  WHERE id = ?";
+
+        return (Campaign) jdbc.queryForObject(
+                sql,
+                new Object[]{campaignId},
+                new BeanPropertyRowMapper(Campaign.class));
+    }
+
+
+
+
+
 }

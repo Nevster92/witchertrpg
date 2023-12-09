@@ -1,6 +1,9 @@
 package com.witcher.ttrpgapi;
 
+import com.witcher.ttrpgapi.pojo.request.AbillityRollReq;
+import com.witcher.ttrpgapi.service.ActionService;
 import model.HelloMessage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -13,9 +16,11 @@ import java.security.Principal;
 @Controller
 public class ChatController {
 
-
-
-    // az endpoint /app/hello mert a configben app van
+    private ActionService actionService;
+    @Autowired
+    public void ActionService(ActionService actionService){
+        this.actionService = actionService;
+    }
 
 
     // subscribe a topic/greetings -re
@@ -40,5 +45,16 @@ public class ChatController {
 
         return new Greeting(principal.getName()+": " +
                 HtmlUtils.htmlEscape(message.getName()));
+    }
+
+    @MessageMapping("/{roomId}/roll_attribute")
+    @SendTo("/topic/room/{roomId}")
+    @CrossOrigin()
+    public String rollAttribute(@DestinationVariable String roomId, AbillityRollReq abillityRollReq, Principal principal) throws InterruptedException {
+        System.out.println("roomMassage fut");
+        System.out.println("roomId: "+roomId);
+
+
+        return actionService.rollAbillity(abillityRollReq).getBody().toString();
     }
 }

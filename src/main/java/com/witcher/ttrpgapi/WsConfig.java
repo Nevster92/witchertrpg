@@ -1,5 +1,7 @@
 package com.witcher.ttrpgapi;
 
+import com.witcher.ttrpgapi.repository.CharacterJdbcRepository;
+import com.witcher.ttrpgapi.service.WsService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,12 +27,15 @@ import org.springframework.messaging.support.MessageHeaderAccessor;
 import org.springframework.security.config.annotation.web.messaging.MessageSecurityMetadataSourceRegistry;
 import org.springframework.security.config.annotation.web.socket.AbstractSecurityWebSocketMessageBrokerConfigurer;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
@@ -38,8 +43,10 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 import org.springframework.web.socket.server.HandshakeInterceptor;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 
 @EnableWebSocketMessageBroker
@@ -52,26 +59,37 @@ public class WsConfig implements WebSocketMessageBrokerConfigurer {
     @Autowired
     private JwtDecoder jwtDecoder;
 
+    private WsService wsService;
+    @Autowired
+    public void WsService(WsService wsService) {
+        this.wsService = wsService;
+    }
+
     @Override
     public void configureClientInboundChannel(ChannelRegistration registration) {
-        System.out.println("LEFUTA PRESEND");
         registration.interceptors(new ChannelInterceptor() {
             @Override
             public Message<?> preSend(Message<?> message, MessageChannel channel) {
-                System.out.println("LEFUTA PRESEND");
                 StompHeaderAccessor accessor =
                         MessageHeaderAccessor.getAccessor(message, StompHeaderAccessor.class);
+
                 if (StompCommand.CONNECT.equals(accessor.getCommand())) {
                     List<String> authorization = accessor.getNativeHeader("X-Authorization");
                     logger.debug("X-Authorization: {}", authorization);
-                    System.out.println(authorization);
-                    System.out.println(authorization.get(0));
                     String accessToken = authorization.get(0).split(" ")[1];
                     Jwt jwt = jwtDecoder.decode(accessToken);
                     JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
                     Authentication authentication = converter.convert(jwt);
                     accessor.setUser(authentication);
                 }
+                if(StompCommand.SUBSCRIBE.equals(accessor.getCommand())) {
+                    Principal principal = accessor.getUser();
+                    JwtAuthenticationToken jwtAuthenticationToken = (JwtAuthenticationToken) principal;
+                    Jwt jwt = (Jwt) jwtAuthenticationToken.getPrincipal();
+                    long id = jwt.getClaim("id");
+                    if(!wsService.wsRoomAcces(accessor.getDestination(), id ))
+                    throw new IllegalArgumentException("No permission for this topic");
+                    }
                 return message;
             }
         });
