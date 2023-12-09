@@ -1,0 +1,35 @@
+create table character
+(
+    id                  serial
+        constraint character_id
+            primary key,
+    name                varchar(255),
+    profession          varchar(255),
+    race                varchar(255),
+    gender              varchar(255),
+    age                 integer,
+    intelligence        integer,
+    ref                 integer,
+
+);
+
+
+create table user_data
+(
+    id       serial
+        constraint user_data_id
+            primary key,
+    username varchar not null,
+    password varchar not null,
+    email    varchar not null
+);
+
+create table user_characters
+(
+    user_id     integer
+        constraint user_id
+            references user_data,
+    chracter_id integer
+        constraint character_id
+            references character
+);

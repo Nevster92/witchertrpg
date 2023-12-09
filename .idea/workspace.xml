@@ -4,37 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab505d97-d791-44e1-a792-0a781f754ea8" name="Changes" comment="campaign crud">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/pojo/request/AbillityRollReq.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/service/ActionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/service/WsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/user/UserDTO.java" afterDir="false" />
+    <list default="true" id="ab505d97-d791-44e1-a792-0a781f754ea8" name="Changes" comment="minor fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/ChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/WsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/WsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/APIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/APIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/CampaignController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/CampaignController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/CharacterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/CharacterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/controller/InventoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/pojo/Campaign.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/pojo/Campaign.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/repository/CampaignRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/repository/CampaignRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/repository/CharacterJdbcRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/repository/CharacterJdbcRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/security/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/security/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/service/AttributeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/service/CampaignService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/service/CampaignService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/service/CharacterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/service/CharacterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/utils/TableReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/witcher/ttrpgapi/utils/TableReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tables.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tables.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/ChatController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/ChatController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/WsConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/WsConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/controller/APIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/controller/APIController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/controller/AuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/security/config/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/security/config/WebSecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/witcher/ttrpgapi/user/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,6 +189,8 @@
       <workItem from="1701515116585" duration="10040000" />
       <workItem from="1701593398844" duration="5964000" />
       <workItem from="1701938276047" duration="15978000" />
+      <workItem from="1702124710435" duration="3141000" />
+      <workItem from="1702135514356" duration="66000" />
     </task>
     <task id="LOCAL-00001" summary="JWA impl">
       <created>1687515735522</created>
@@ -257,7 +231,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696512374237</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="minor fixes">
+      <option name="closed" value="true" />
+      <created>1702124769893</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1702124769893</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,7 +274,8 @@
     <MESSAGE value="character CDRUD" />
     <MESSAGE value="inventory crud" />
     <MESSAGE value="campaign crud" />
-    <option name="LAST_COMMIT_MESSAGE" value="campaign crud" />
+    <MESSAGE value="minor fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
